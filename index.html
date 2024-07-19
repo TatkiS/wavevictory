@@ -33,8 +33,6 @@
   nav ul {
     padding: 0;
     list-style: none;
-    text-align: center;
-    margin: 0;
   }
 
   nav ul li {
@@ -45,7 +43,6 @@
   nav ul li a {
     text-decoration: none;
     color: #fff;
-    font-weight: bold;
   }
 
   main {
@@ -150,6 +147,10 @@
       padding: 5px;
       font-size: 14px;
     }
+
+    #playButton::before {
+      content: 'Play';
+    }
   }
 </style>
 </head>
@@ -161,8 +162,8 @@
     <h1>Хвиля Перемоги</h1>
     <nav>
         <ul>
-            <li><a href="#about">Про нас</a></li>
-            <li><a href="#contact">Контакти</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="contact.html">Контакти</a></li>
         </ul>
     </nav>
 </header>
@@ -183,16 +184,6 @@
             <source src="https://stream.zeno.fm/sikg4vgnv2jvv" type="audio/mpeg">
             Ваш браузер не підтримує аудіо елемент.
         </audio>
-    </section>
-
-    <section id="about">
-        <h2>Про нас</h2>
-        <p>"Хвиля Перемоги" – це радіо, де українська сучасна музика відіграє ключову роль, об'єднуючи жанри та культури.</p>
-    </section>
-
-    <section id="contact">
-        <h2>Контакти</h2>
-        <p>Для звернень щодо питань ефіру або іншої інформації, будь ласка, пишіть на нашу електронну пошту: <a href="mailto:wavevictory@protonmail.com">wavevictory@protonmail.com</a></p>
     </section>
 </main>
 
