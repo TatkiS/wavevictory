@@ -13,7 +13,7 @@
     color: white;
   }
   header {
-    background-color: #1114ce;
+    background-color: #0057B8;
     color: #fff;
     padding: 30px 0;
     text-align: center;
@@ -42,7 +42,7 @@
     padding: 15px;
   }
   footer {
-    background-color: hwb(64 17% 0%);
+    background-color: #FFD700;
     color: #fff;
     text-align: center;
     padding: 30px 0;
@@ -74,6 +74,9 @@
   }
   #playButton {
     left: 10px;
+    width: 60px;
+    height: 40px;
+    background: linear-gradient(90deg, #0057B8 50%, #FFD700 50%);
   }
   #volumeControl {
     right: 10px;
@@ -140,12 +143,15 @@
         <h2>Розклад</h2>
         <p>Наша радіостанція працює круглосуточно, безперервно відтворюючи найсвіжіші треки та вічні хіти від відомих та нових артистів.</p>
     </section>
-
+    <section id="contact">
+      <h2>Контакти</h2>
+      <p>Для звернень щодо питань ефіру або іншої інформації, будь ласка, пишіть на нашу електронну пошту: <a href="mailto:wavevictory@protonmail.com">wavevictory@protonmail.com</a></p>
+  </section>
     <section id="player">
         <h2>Прямий ефір</h2>
         <div id="visualizer-container">
             <canvas id="visualizer"></canvas>
-            <button id="playButton">Play</button>
+            <button id="playButton"></button>
             <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
         </div>
         <audio id="audio" crossorigin="anonymous">
@@ -153,13 +159,12 @@
             Ваш браузер не підтримує аудіо елемент.
         </audio>
     </section>
+    
     <a href="https://linktr.ee/Sergiy_Budniy" target="_blank">
         <button class="buymeacoffee">НА КАВУ</button>
     </a>
-    <section id="contact">
-        <h2>Контакти</h2>
-        <p>Для зв'язку з нами використовуйте електронну пошту: <a href="mailto:wavevictory@protonmail.com">wavevictory@protonmail.com</a></p>
-    </section>
+    
+
 </main>
 
 <footer>
