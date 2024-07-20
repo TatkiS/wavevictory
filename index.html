@@ -41,7 +41,7 @@
   }
   main {
     padding: 15px;
-    margin-bottom: 100px; /* Додаємо відступ для плеєра */
+    margin-bottom: 150px; /* Збільшено відступ для плеєра */
   }
   footer {
     background-color: #FFD700;
@@ -54,11 +54,11 @@
   }
   #visualizer-container {
     position: fixed;
-    bottom: 0;
+    bottom: 60px; /* Піднято плеєр вище від футера */
     display: block;
     width: 100%;
     max-width: 500px;
-    height: 250px;
+    height: 200px; /* Зменшена висота плеєра */
     background-color: black;
     z-index: 1000; /* Додаємо більше значення z-index для забезпечення видимості */
   }
@@ -71,14 +71,14 @@
     bottom: 10px;
     background: rgba(255, 255, 255, 0.7);
     border: none;
-    padding: 8px;
+    padding: 5px;
     cursor: pointer;
     font-size: 14px;
   }
   #playButton {
     left: 10px;
     width: 50px;
-    height: 35px;
+    height: 30px; /* Зменшена висота кнопки */
     background: linear-gradient(90deg, #0057B8 50%, #FFD700 50%);
   }
   #volumeControl {
@@ -115,11 +115,12 @@
       font-size: 12px;
     }
     #visualizer-container {
-      height: 200px;
+      height: 180px; /* Зменшена висота плеєра для мобільних пристроїв */
+      bottom: 50px; /* Піднято плеєр для мобільних пристроїв */
     }
     #playButton, #volumeControl {
       bottom: 5px;
-      padding: 5px;
+      padding: 4px;
       font-size: 12px;
     }
   }
