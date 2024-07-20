@@ -13,14 +13,14 @@
     color: white;
   }
   header {
-    background-color: #0057B8;
+    background-color: #1114ce;
     color: #fff;
-    padding: 20px;
+    padding: 30px 0;
     text-align: center;
   }
   header h1 {
     animation: colorChange 10s infinite;
-    font-size: 24px; /* Зменшено розмір шрифту заголовка */
+    font-size: 28px; /* Зменшено розмір шрифту заголовка */
   }
   @keyframes colorChange {
     0% { color: #ff2d55; }
@@ -41,26 +41,27 @@
   }
   main {
     padding: 15px;
-    margin-bottom: 150px; /* Збільшено відступ для плеєра */
+    margin-bottom: 350px; /* Відступ для плеєра */
   }
   footer {
-    background-color: #FFD700;
+    background-color: hwb(64 17% 0%);
     color: #fff;
     text-align: center;
-    padding: 20px;
+    padding: 30px 0;
     position: fixed;
     bottom: 0;
     width: 100%;
   }
   #visualizer-container {
     position: fixed;
-    bottom: 60px; /* Піднято плеєр вище від футера */
+    bottom: 60px; /* Відступ від футера */
     display: block;
     width: 100%;
-    max-width: 500px;
-    height: 200px; /* Зменшена висота плеєра */
+    max-width: 600px;
+    height: 300px;
     background-color: black;
-    z-index: 1000; /* Додаємо більше значення z-index для забезпечення видимості */
+    margin: 0 auto;
+    z-index: 1000; /* Плеєр завжди поверх */
   }
   #visualizer {
     width: 100%;
@@ -71,15 +72,12 @@
     bottom: 10px;
     background: rgba(255, 255, 255, 0.7);
     border: none;
-    padding: 5px;
+    padding: 10px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
   }
   #playButton {
     left: 10px;
-    width: 50px;
-    height: 30px; /* Зменшена висота кнопки */
-    background: linear-gradient(90deg, #0057B8 50%, #FFD700 50%);
   }
   #volumeControl {
     right: 10px;
@@ -91,12 +89,13 @@
     background-color: rgb(0, 0, 0);
     color: white;
     padding: 10px;
-    font-size: 14px;
+    font-size: 16px;
+    margin-bottom: 20px; /* Зменшено відступ */
   }
   .scrolling-banner::before {
     content: 'ПУТІН ХУЙЛО! ВСІ МОСКАЛІ ПІДАРАСИ! ВСЕ БУДЕ УКРАЇНА! УКРАЇНА ПОНАД УСЕ! ПУТІН ХУЙЛО! ВСІ МОСКАЛІ ПІДАРАСИ! ВСЕ БУДЕ УКРАЇНА! УКРАЇНА ПОНАД УСЕ! ПУТІН ХУЙЛО! ВСІ МОСКАЛІ ПІДАРАСИ! ВСЕ БУДЕ УКРАЇНА! УКРАЇНА ПОНАД УСЕ!!';
     display: inline-block;
-    animation: scroll-banner 30s linear infinite;
+    animation: scroll-banner 40s linear infinite;
   }
   @keyframes scroll-banner {
     0% { transform: translateX(100%); }
@@ -104,24 +103,24 @@
   }
   @media screen and (max-width: 768px) {
     header h1 {
-      font-size: 20px; /* Зменшено розмір шрифту заголовка */
+      font-size: 24px; /* Зменшено розмір шрифту заголовка для мобільних пристроїв */
     }
     nav ul li {
       display: block;
-      margin: 5px 0;
+      margin: 10px 0;
       text-align: center;
     }
     .scrolling-banner {
-      font-size: 12px;
+      font-size: 14px; /* Зменшено розмір шрифту */
     }
     #visualizer-container {
-      height: 180px; /* Зменшена висота плеєра для мобільних пристроїв */
-      bottom: 50px; /* Піднято плеєр для мобільних пристроїв */
+      height: 200px; /* Зменшено висоту плеєра для мобільних пристроїв */
+      bottom: 20px; /* Відступ від футера на мобільних пристроях */
     }
     #playButton, #volumeControl {
       bottom: 5px;
-      padding: 4px;
-      font-size: 12px;
+      padding: 5px;
+      font-size: 14px;
     }
   }
 </style>
@@ -146,17 +145,12 @@
     </section>
 
     <section id="schedule">
+        <h2>Розклад</h2>
         <p>Наша радіостанція працює круглосуточно, безперервно відтворюючи найсвіжіші треки та вічні хіти від відомих та нових артистів.</p>
-        <h2>Контакти</h2>
-        <p>Для звернень щодо питань ефіру або іншої інформації, будь ласка, пишіть на нашу електронну пошту: <a href="mailto:wavevictory@protonmail.com">wavevictory@protonmail.com</a></p>
     </section>
 
     <section id="player">
-        <h2>
-            <a href="https://linktr.ee/Sergiy_Budniy" target="_blank">
-                <button class="buymeacoffee">НА КАВУ</button>
-            </a>
-        </h2>
+        <h2>Прямий ефір</h2>
         <div id="visualizer-container">
             <canvas id="visualizer"></canvas>
             <button id="playButton">Play</button>
@@ -167,7 +161,13 @@
             Ваш браузер не підтримує аудіо елемент.
         </audio>
     </section>
-      
+    <a href="https://linktr.ee/Sergiy_Budniy" target="_blank">
+        <button class="buymeacoffee">НА КАВУ</button>
+    </a>
+    <section id="contact">
+        <h2>Контакти</h2>
+        <p>Для зв'язку з нами використовуйте електронну пошту: <a href="mailto:wavevictory@protonmail.com">wavevictory@protonmail.com</a></p>
+    </section>
 </main>
 
 <footer>
