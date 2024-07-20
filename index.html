@@ -20,7 +20,6 @@
   }
   header h1 {
     animation: colorChange 10s infinite;
-    font-size: 28px;
   }
   @keyframes colorChange {
     0% { color: #ff2d55; }
@@ -66,6 +65,7 @@
   }
   #playButton, #volumeControl {
     position: absolute;
+    bottom: 10px;
     background: rgba(255, 255, 255, 0.7);
     border: none;
     padding: 10px;
@@ -74,11 +74,9 @@
   }
   #playButton {
     left: 10px;
-    bottom: 10px;
   }
   #volumeControl {
     right: 10px;
-    bottom: 10px;
   }
   .scrolling-banner {
     white-space: nowrap;
@@ -138,22 +136,30 @@
         <p>"Хвиля Перемоги" – це радіо, де українська сучасна музика відіграє ключову роль, об'єднуючи жанри та культури.</p>
     </section>
 
-    <section id="contact">
-        <h2>Контакти</h2>
-        <p>Для зв'язку з нами використовуйте електронну пошту: <a href="mailto:wavevictory@protonmail.com">wavevictory@protonmail.com</a></p>
+    <section id="schedule">
+        <h2>Розклад</h2>
+        <p>Наша радіостанція працює круглосуточно, безперервно відтворюючи найсвіжіші треки та вічні хіти від відомих та нових артистів.</p>
     </section>
 
     <section id="player">
-    <div id="visualizer-container">
+        <h2>Прямий ефір</h2>
+        <div id="visualizer-container">
             <canvas id="visualizer"></canvas>
             <button id="playButton">Play</button>
             <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
         </div>
+        <audio id="audio" crossorigin="anonymous">
+            <source src="https://stream.zeno.fm/sikg4vgnv2jvv" type="audio/mpeg">
+            Ваш браузер не підтримує аудіо елемент.
+        </audio>
     </section>
     <a href="https://linktr.ee/Sergiy_Budniy" target="_blank">
         <button class="buymeacoffee">НА КАВУ</button>
     </a>
-
+    <section id="contact">
+        <h2>Контакти</h2>
+        <p>Для зв'язку з нами використовуйте електронну пошту: <a href="mailto:wavevictory@protonmail.com">wavevictory@protonmail.com</a></p>
+    </section>
 </main>
 
 <footer>
