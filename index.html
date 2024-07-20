@@ -20,6 +20,7 @@
   }
   header h1 {
     animation: colorChange 10s infinite;
+    font-size: 24px; /* Зменшено розмір шрифту заголовка */
   }
   @keyframes colorChange {
     0% { color: #ff2d55; }
@@ -40,6 +41,7 @@
   }
   main {
     padding: 15px;
+    margin-bottom: 100px; /* Додаємо відступ для плеєра */
   }
   footer {
     background-color: #FFD700;
@@ -51,13 +53,14 @@
     width: 100%;
   }
   #visualizer-container {
-    position: relative;
+    position: fixed;
+    bottom: 0;
     display: block;
-    margin: 20px auto;
     width: 100%;
     max-width: 500px;
     height: 250px;
     background-color: black;
+    z-index: 1000; /* Додаємо більше значення z-index для забезпечення видимості */
   }
   #visualizer {
     width: 100%;
@@ -101,7 +104,7 @@
   }
   @media screen and (max-width: 768px) {
     header h1 {
-      font-size: 20px;
+      font-size: 20px; /* Зменшено розмір шрифту заголовка */
     }
     nav ul li {
       display: block;
@@ -142,6 +145,7 @@
     </section>
 
     <section id="schedule">
+        <p>Наша радіостанція працює круглосуточно, безперервно відтворюючи найсвіжіші треки та вічні хіти від відомих та нових артистів.</p>
         <h2>Контакти</h2>
         <p>Для звернень щодо питань ефіру або іншої інформації, будь ласка, пишіть на нашу електронну пошту: <a href="mailto:wavevictory@protonmail.com">wavevictory@protonmail.com</a></p>
     </section>
