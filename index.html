@@ -4,19 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Хвиля Перемоги</title>
-  <!-- Інші мета-теги та стилі -->
-  <meta property="og:title" content="Хвиля Перемоги">
-  <meta property="og:description" content="Українська сучасна музика, об'єднуючи жанри та культури.">
-  <meta property="og:image" content="URL_до_вашого_логотипу.jpg">
-  <meta property="og:url" content="https://tatkis.github.io/wavevictory/">
-  <meta property="og:type" content="website">
-  <!-- Додаткові мета-теги -->
 <style>
   body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: hwb(0 0% 100%);
+    background-color: #000; /* Зменшено навантаження на рендеринг */
     color: white;
   }
   header {
@@ -155,7 +148,7 @@
         <h2>Прямий ефір</h2>
         <div id="visualizer-container">
             <canvas id="visualizer"></canvas>
-            <button id="playButton"></button>
+            <button id="playButton">Play</button>
             <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
         </div>
         <audio id="audio" crossorigin="anonymous">
@@ -193,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let bufferLength;
 
     function setupAudioContext() {
+        console.log('Setting up audio context...');
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
         analyser = audioContext.createAnalyser();
         source = audioContext.createMediaElementSource(audio);
@@ -204,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function visualize() {
+        console.log('Starting visualization...');
         function draw() {
             requestAnimationFrame(draw);
             analyser.getByteFrequencyData(dataArray);
@@ -233,14 +228,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             audio.play();
             playButton.textContent = 'Pause';
+            console.log('Audio is playing...');
         } else {
             audio.pause();
             playButton.textContent = 'Play';
+            console.log('Audio is paused...');
         }
     });
 
     volumeControl.addEventListener('input', (event) => {
         audio.volume = event.target.value;
+        console.log('Volume set to:', audio.volume);
     });
 
     audio.addEventListener('play', () => {
@@ -248,10 +246,12 @@ document.addEventListener('DOMContentLoaded', () => {
             setupAudioContext();
             visualize();
         }
+        console.log('Audio started playing...');
     });
 
     audio.addEventListener('pause', () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        console.log('Audio paused and visualizer cleared...');
     });
 });
 </script>
