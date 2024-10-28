@@ -9,7 +9,7 @@
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #000; /* Зменшено навантаження на рендеринг */
+    background-color: #000;
     color: white;
   }
   header {
@@ -186,19 +186,22 @@ document.addEventListener('DOMContentLoaded', () => {
     let bufferLength;
 
     function setupAudioContext() {
-        console.log('Setting up audio context...');
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        analyser = audioContext.createAnalyser();
-        source = audioContext.createMediaElementSource(audio);
-        source.connect(analyser);
-        analyser.connect(audioContext.destination);
-        analyser.fftSize = 256;
-        bufferLength = analyser.frequencyBinCount;
-        dataArray = new Uint8Array(bufferLength);
+        try {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            analyser = audioContext.createAnalyser();
+            source = audioContext.createMediaElementSource(audio);
+            source.connect(analyser);
+            analyser.connect(audioContext.destination);
+            analyser.fftSize = 256;
+            bufferLength = analyser.frequencyBinCount;
+            dataArray = new Uint8Array(bufferLength);
+        } catch (e) {
+            console.error("AudioContext не підтримується: ", e);
+        }
     }
 
     function visualize() {
-        console.log('Starting visualization...');
+        if (!ctx) return;
         function draw() {
             requestAnimationFrame(draw);
             analyser.getByteFrequencyData(dataArray);
@@ -210,8 +213,8 @@ document.addEventListener('DOMContentLoaded', () => {
             for (let i = 0; i < bufferLength; i++) {
                 barHeight = dataArray[i];
                 const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-                gradient.addColorStop(0, '#0057b7'); // синій
-                gradient.addColorStop(1, '#ffd700'); // жовтий
+                gradient.addColorStop(0, '#0057b7');
+                gradient.addColorStop(1, '#ffd700');
                 ctx.fillStyle = gradient;
                 ctx.fillRect(x, canvas.height - barHeight / 2, barWidth, barHeight / 2);
                 x += barWidth + 1;
@@ -228,17 +231,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             audio.play();
             playButton.textContent = 'Pause';
-            console.log('Audio is playing...');
         } else {
             audio.pause();
             playButton.textContent = 'Play';
-            console.log('Audio is paused...');
         }
     });
 
     volumeControl.addEventListener('input', (event) => {
         audio.volume = event.target.value;
-        console.log('Volume set to:', audio.volume);
     });
 
     audio.addEventListener('play', () => {
@@ -246,12 +246,10 @@ document.addEventListener('DOMContentLoaded', () => {
             setupAudioContext();
             visualize();
         }
-        console.log('Audio started playing...');
     });
 
     audio.addEventListener('pause', () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        console.log('Audio paused and visualizer cleared...');
     });
 });
 </script>
