@@ -81,6 +81,20 @@
   #volumeControl {
     right: 10px;
   }
+  .buymeacoffee {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px 0;
+    font-size: 18px;
+    color: #fff;
+    background: #FFDD00;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+  }
   .scrolling-banner {
     white-space: nowrap;
     overflow: hidden;
@@ -157,9 +171,7 @@
         </audio>
     </section>
 
-    <a href="https://bit.ly/3APXqaS" target="_blank">
-        <button class="buymeacoffee">НА КАВУ</button>
-    </a>
+    <a href="https://bit.ly/3APXqaS" target="_blank" class="buymeacoffee">НА КАВУ</a>
 
     <section id="contact">
         <h2>Контакти</h2>
@@ -186,6 +198,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let bufferLength;
 
     function setupAudioContext() {
+        if (!window.AudioContext && !window.webkitAudioContext) {
+            alert("Ваш браузер не підтримує Web Audio API!");
+            return;
+        }
         try {
             audioContext = new (window.AudioContext || window.webkitAudioContext)();
             analyser = audioContext.createAnalyser();
@@ -229,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setupAudioContext();
                 visualize();
             }
-            audio.play();
+            audio.play().catch(error => console.error("Помилка відтворення:", error));
             playButton.textContent = 'Pause';
         } else {
             audio.pause();
@@ -237,21 +253,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    volumeControl.addEventListener('input', (event) => {
-        audio.volume = event.target.value;
+    volumeControl.addEventListener('input', () => {
+        audio.volume = volumeControl.value;
     });
 
-    audio.addEventListener('play', () => {
-        if (!audioContext) {
-            setupAudioContext();
-            visualize();
-        }
-    });
-
-    audio.addEventListener('pause', () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    window.addEventListener('resize', () => {
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
     });
 });
 </script>
+
 </body>
 </html>
