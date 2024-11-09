@@ -124,7 +124,7 @@
       font-size: 12px;
     }
     #visualizer-container {
-      height: 250px; /* Зменшена висота для мобільних */
+      height: 200px;
     }
     #playButton, #volumeControl {
       bottom: 5px;
@@ -162,7 +162,7 @@
     <section id="player">
     
         <div id="visualizer-container">
-            <canvas id="visualizer" width="600" height="300"></canvas>
+            <canvas id="visualizer"></canvas>
             <button id="playButton">Play</button>
             <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
         </div>
@@ -171,6 +171,10 @@
             Ваш браузер не підтримує аудіо елемент.
         </audio>
     </section>
+
+    <a href="https://bit.ly/3APXqaS" target="_blank" class="buymeacoffee">НА КАВУ</a>
+
+
 </main>
 
 <footer>
@@ -249,6 +253,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     volumeControl.addEventListener('input', () => {
         audio.volume = volumeControl.value;
+    });
+
+    window.addEventListener('resize', () => {
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
     });
 });
 </script>
